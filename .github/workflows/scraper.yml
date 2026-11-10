@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Trigger server scraper
         run: |
-          curl -fsS --max-time 30 \
+          curl -fsS --http1.1 --max-time 30 \
             "https://kuronestudio.site.je/internal-cron.php?token=${{ secrets.CRON_TOKEN }}" \
             -o /tmp/scrape-result.json || true
           cat /tmp/scrape-result.json || echo "(tidak ada output — scraper lanjut di background)"
